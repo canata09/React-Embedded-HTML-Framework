@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <title>React embedded in html</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+
+    <script type="text/babel">
+
+        function CustomFunction() {
+
+
+
+            return (
+                <div className="App">
+
+
+                    <div className="blogger">
+
+                        <h2>Hello World</h2>
+
+                    </div>
+
+
+
+
+                    <div className="sidebar" >
+
+                    </div>
+
+
+
+
+
+                    <div className="middledoc">
+
+                    </div>
+
+
+
+
+
+                </div>
+            );
+        };
+
+        function App() {
+
+            return (
+                <CustomFunction />
+            );
+        };
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(
+            <App />
+
+        )
+    </script>
+</body>
+
+</html>
