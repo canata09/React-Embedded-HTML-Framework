@@ -19,14 +19,116 @@
     <script type="text/babel">
         const { useState } = React;
 
-        function Universal() {
-            return <div><h2>Universal Page</h2><p>Welcome to the Universal page!</p></div>;
+
+
+        const Sidemenu = () => {
+
+            return (
+
+                <div className="sidebar"  >
+
+
+                    <div className="tomenu"  >
+                        <a href="#link1" >Link 1</a>
+                    </div>
+
+
+
+
+                    <div className="dropdown-content"  >
+
+                        <div className="sidedoc" >
+
+                            <ul>
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#services">Services</a></li>
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                                <button className="dropdown-toggle" >
+                                    Dropdown
+                                </button>
+                            </ul>
+
+                        </div>
+                        <div className="subdoc" >
+
+                            <div className="forum-container">
+                                <div className="forum-header">
+                                    <p className="forum-title">Forum</p>
+                                </div>
+                                <div className="forum-content">
+                                    <ul className="user-list">
+                                        <li className="user-item">
+                                            <a href="/" className="user-link">
+                                                <span className="bullet">•</span>User
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <input type="search" id="default-search" className="search-input" placeholder="Search Groups..." required />
+                                    <ul className="group-list">
+                                        <li className="group-item">
+                                            <a href="#link1" className="group-link">
+                                                <span className="bullet">•</span>Group 1
+                                            </a>
+                                        </li>
+                                        <li className="group-item">
+                                            <a href="/" className="group-link">
+                                                <span className="bullet">•</span>Group 2
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+            );
+        };
+
+
+
+
+
+
+        const Universal = ({ handleClick }) => {
+            return (
+                <>
+                    <div className="rightdoc">
+                        <div className="header">
+                            <nav>
+                                <ul>
+                                    <li><a onClick={() => handleClick('universal')} href="#universal">Universal</a></li>
+                                    <li><a onClick={() => handleClick('normalize')} href="#normalize">Normalize</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div className="middledoc">
+                        <h2>Universal Page</h2>
+                        <p>Welcome to the Universal page!</p>
+                    </div>
+                </>
+            );
         }
 
         function Normalize() {
-            return <div><h2>Normalize Page</h2><p>This is the Normalize page content.</p></div>;
+            return (
+                <>
+                    <div className="middledoc">
+                        <h2>Normalize Page</h2>
+                        <p>Welcome to the Normalize page!</p>
+                    </div>
+                </>
+            );
         }
-        
+
         const pagesMap = {
             universal: Universal,
             normalize: Normalize,
@@ -63,23 +165,9 @@
 
                     </div>
 
+                    <Sidemenu />
 
-
-
-                    <div className="sidebar" >
-
-                    </div>
-
-
-
-
-
-                    <div className="middledoc">
-
-                    </div>
-
-
-
+                    <SelectedPage handleClick={handleClick} />
 
 
                 </div>
