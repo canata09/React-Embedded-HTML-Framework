@@ -7,6 +7,8 @@
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="app.css">
     <style>
 
     </style>
@@ -21,74 +23,38 @@
 
 
 
-        const Sidemenu = () => {
+        const Sidemenu = ({ menuItems, activeSubmenu, onMenuClick }) => {
 
             return (
-
-                <div className="sidebar"  >
-
-
-                    <div className="tomenu"  >
-                        <a href="#link1" >Link 1</a>
+                <div className="sidebar">
+                    <div className="tomenu">
+                        <a href="#link1">Link 1</a>
                     </div>
-
-
-
-
-                    <div className="dropdown-content"  >
-
-                        <div className="sidedoc" >
-
+                    <div className="dropdown-content">
+                        <div className="sidedoc">
                             <ul>
-                                <li><a href="#home">Home</a></li>
-                                <li><a href="#services">Services</a></li>
-                                <li><a href="#about">About</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                                <button className="dropdown-toggle" >
-                                    Dropdown
-                                </button>
+                                {menuItems.map((item, index) => (
+                                    <li key={index}>
+                                        <a onClick={() => onMenuClick(item.submenu)}>
+                                            {item.name}
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
-
                         </div>
-                        <div className="subdoc" >
-
-                            <div className="forum-container">
-                                <div className="forum-header">
-                                    <p className="forum-title">Forum</p>
+                        <div className="subdoc">
+                            {activeSubmenu && (
+                                <div>
+                                    {activeSubmenu.map((subitem, index) => (
+                                        <a href={`#${subitem.name}`} key={index}>
+                                            {subitem.content}
+                                        </a>
+                                    ))}
                                 </div>
-                                <div className="forum-content">
-                                    <ul className="user-list">
-                                        <li className="user-item">
-                                            <a href="/" className="user-link">
-                                                <span className="bullet">•</span>User
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <input type="search" id="default-search" className="search-input" placeholder="Search Groups..." required />
-                                    <ul className="group-list">
-                                        <li className="group-item">
-                                            <a href="#link1" className="group-link">
-                                                <span className="bullet">•</span>Group 1
-                                            </a>
-                                        </li>
-                                        <li className="group-item">
-                                            <a href="/" className="group-link">
-                                                <span className="bullet">•</span>Group 2
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
+                            )}
                         </div>
                     </div>
-
-
-
-
-
                 </div>
-
             );
         };
 
@@ -97,19 +63,9 @@
 
 
 
-        const Universal = ({ handleClick }) => {
+        function Universal() {
             return (
                 <>
-                    <div className="rightdoc">
-                        <div className="header">
-                            <nav>
-                                <ul>
-                                    <li><a onClick={() => handleClick('universal')} href="#universal">Universal</a></li>
-                                    <li><a onClick={() => handleClick('normalize')} href="#normalize">Normalize</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
                     <div className="middledoc">
                         <h2>Universal Page</h2>
                         <p>Welcome to the Universal page!</p>
@@ -136,19 +92,47 @@
 
         function CustomFunction() {
             const [page, setPage] = useState('universal');
+            const [activeSubmenu, setActiveSubmenu] = useState(null);
+
+            const menuItems = [
+                {
+                    name: 'Page 1',
+                    submenu: [
+                        {
+                            name: 'Subpage 1',
+                            content: <div>Content for Subpage 1</div>,
+                        },
+                        {
+                            name: 'Subpage 2',
+                            content: <div>Content for Subpage 2</div>,
+                        },
+                    ],
+                },
+                {
+                    name: 'Page 2',
+                    submenu: [
+                        {
+                            name: 'Subpage 3',
+                            content: <div>Content for Subpage 3</div>,
+                        },
+                    ],
+                },
+            ];
 
             const handleClick = (newPage) => {
                 setPage(newPage);
+                setActiveSubmenu(null); // Reset submenu on page change
+            };
+
+            const handleMenuClick = (submenu) => {
+                setActiveSubmenu(submenu);
             };
 
             const SelectedPage = pagesMap[page];
 
             return (
                 <div className="App">
-
-
                     <div className="blogger">
-
                         <nav>
                             <div className="menu">Item 1</div>
                             <div className="menu">Item 2</div>
@@ -162,18 +146,12 @@
                                 </ul>
                             </nav>
                         </div>
-
                     </div>
-
-                    <Sidemenu />
-
-                    <SelectedPage handleClick={handleClick} />
-
-
+                    <Sidemenu menuItems={menuItems} activeSubmenu={activeSubmenu} onMenuClick={handleMenuClick} />
+                    <SelectedPage />
                 </div>
             );
         };
-
         function App() {
             return (
                 <div className="App">
