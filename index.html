@@ -17,10 +17,29 @@
 
 
     <script type="text/babel">
+        const { useState } = React;
+
+        function Universal() {
+            return <div><h2>Universal Page</h2><p>Welcome to the Universal page!</p></div>;
+        }
+
+        function Normalize() {
+            return <div><h2>Normalize Page</h2><p>This is the Normalize page content.</p></div>;
+        }
+        
+        const pagesMap = {
+            universal: Universal,
+            normalize: Normalize,
+        };
 
         function CustomFunction() {
+            const [page, setPage] = useState('universal');
 
+            const handleClick = (newPage) => {
+                setPage(newPage);
+            };
 
+            const SelectedPage = pagesMap[page];
 
             return (
                 <div className="App">
@@ -28,7 +47,19 @@
 
                     <div className="blogger">
 
-                        <h2>Hello World</h2>
+                        <nav>
+                            <div className="menu">Item 1</div>
+                            <div className="menu">Item 2</div>
+                            <div className="menu">Item 3</div>
+                        </nav>
+                        <div className="header">
+                            <nav>
+                                <ul>
+                                    <li><a onClick={() => handleClick('universal')} href="#universal">Universal</a></li>
+                                    <li><a onClick={() => handleClick('normalize')} href="#normalize">Normalize</a></li>
+                                </ul>
+                            </nav>
+                        </div>
 
                     </div>
 
@@ -56,9 +87,11 @@
         };
 
         function App() {
-
             return (
-                <CustomFunction />
+                <div className="App">
+                    <h1>React Uygulaması</h1>
+                    <CustomFunction />
+                </div>
             );
         };
 
