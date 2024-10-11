@@ -9,6 +9,8 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="Template.css">
+    <link rel="stylesheet" href="prefab.css">
     <style>
 
     </style>
@@ -25,9 +27,30 @@
         function Universal() {
             return (
                 <>
-                    <div className="forum-container">
-                        <div className="forum-header">
-                            <p className="forum-title">Universal 1</p>
+                    <div className="component">
+                        <div className="box">
+                            <div className="tax">
+                                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                                <p>Anadolu Üniversitesi Eylül 2021.</p>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="tax">
+                                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                                <p>Anadolu Üniversitesi Eylül 2021.</p>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="tax">
+                                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                                <p>Anadolu Üniversitesi Eylül 2021.</p>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="tax">
+                                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                                <p>Anadolu Üniversitesi Eylül 2021.</p>
+                            </div>
                         </div>
                     </div>
                 </>
@@ -37,9 +60,18 @@
         function Normalize() {
             return (
                 <>
-                    <div className="forum-container">
-                        <div className="forum-header">
-                            <p className="forum-title">Normalize 1</p>
+                    <div className="component">
+                        <div className="box">
+                            <div className="tax">
+                                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                                <p>Anadolu Üniversitesi Eylül 2021.</p>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="tax">
+                                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                                <p>Anadolu Üniversitesi Eylül 2021.</p>
+                            </div>
                         </div>
                     </div>
                 </>
@@ -83,21 +115,15 @@
             return (
                 <>
 
-
-                    <div className="blogger">
-                        <div className="header">
-                            <nav></nav>
-                        </div>
-                    </div>
-
                     <div className="blogger" style={{ height: "100%" }}>
+
 
 
 
                         <div className="doc">
                             {activeSubmenu &&
                                 activeSubmenu.map((subitem, index) => (
-                                    <a
+                                    <div className="tax"><a
                                         key={index}
                                         onClick={() => {
                                             handleClick(subitem.name);
@@ -105,7 +131,7 @@
                                         href={`#${subitem.name}`}
                                     >
                                         {subitem.name}
-                                    </a>
+                                    </a></div>
                                 ))}
 
 
