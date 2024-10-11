@@ -22,47 +22,6 @@
         const { useState } = React;
 
 
-
-        const Sidemenu = ({ menuItems, activeSubmenu, onMenuClick }) => {
-
-            return (
-                <div className="sidebar">
-                    <div className="tomenu">
-                        <a href="#link1">Link 1</a>
-                    </div>
-                    <div className="dropdown-content">
-                        <div className="sidedoc">
-                            <ul>
-                                {menuItems.map((item, index) => (
-                                    <li key={index}>
-                                        <a onClick={() => onMenuClick(item.submenu)}>
-                                            {item.name}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="subdoc">
-                            {activeSubmenu && (
-                                <div>
-                                    {activeSubmenu.map((subitem, index) => (
-                                        <a href={`#${subitem.name}`} key={index}>
-                                            {subitem.content}
-                                        </a>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            );
-        };
-
-
-
-
-
-
         function Universal() {
             return (
                 <>
