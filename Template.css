@@ -1,0 +1,229 @@
+/*
+ * Main Tables
+ */
+
+.flex-container {
+    position: relative;
+    float: left;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.flex-item {
+    flex: 1;
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    margin: 10px;
+}
+
+.flex-container .flex-item img {
+    width: 20px;
+    height: 20px;
+    margin: 15px 0px;
+    float: left;
+    position: relative;
+}
+
+.flex-container .flex-item h3 {
+    font-size: 18px;
+    text-align: left;
+    color: #2193b0;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.flex-container .flex-item p {
+    font-size: 14px;
+    text-align: left;
+    color: #555;
+}
+
+.flex-container .flex-item a {
+    font-size: 14px;
+    text-align: left;
+    color: #555;
+}
+
+
+
+
+
+
+
+
+
+/*
+ * Sidebar
+ */
+
+.sidedoc .flex-container {
+    flex-direction: column;
+}
+
+.sidedoc .flex-container .flex-item {
+    flex: 1;
+    height: 100%;
+    padding-bottom: 0rem;
+    text-align: center;
+    margin: 10px;
+}
+
+.sidedoc .flex-container .flex-item:after {
+    content: "";
+    display: table;
+    clear: both;
+    position: relative;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Table
+ */
+
+
+.leftdoc .flex-container {
+    position: relative;
+    float: left;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    background: none;
+    border-radius: 15px;
+    box-shadow: none;
+}
+
+/* Clear floats after the docs */
+.leftdoc .flex-item:after {
+    content: "";
+    display: table;
+    clear: both;
+    position: relative;
+    margin: 0 auto;
+}
+
+.leftdoc .flex-item {
+    flex: 1;
+    height: 100%;
+    background: none;
+    border: 2.8px solid #000;
+    border-radius: 0.15rem;
+    padding-bottom: 0rem;
+    text-align: center;
+    margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.leftdoc .card-title {
+    margin-top: 100px;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    margin-bottom: 1rem;
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    margin-right: 0.5rem;
+}
+
+
+
+
+
+
+
+/* Ekran boyutuna göre düzenlemeler */
+@media screen and (min-width: 1280px) {
+
+    .component {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+}
+
+/* Ekran boyutuna göre düzenlemeler */
+@media only screen and (max-width: 1280px) {
+    .component {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+}
+
+
+
+.title,
+.subtitle,
+.component {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    margin-top: 100px;
+}
+
+.subtitle h2 {
+    color: darkgray;
+}
+
+
