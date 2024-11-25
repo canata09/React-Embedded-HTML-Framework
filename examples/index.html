@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <title>React embedded in html</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="Template.css">
+    <link rel="stylesheet" href="prefab.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+
+    <script type="text/babel">
+        const { useState } = React;
+
+
+        function Universal() {
+            return (
+                <>
+                    <div className="component">
+                        <div className="box">
+                            <div className="tax">
+                                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                                <h3>Paragraph</h3>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="tax">
+                                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                                <h3>Heading 1</h3>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="tax">
+                                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                                <h3>Unordered List</h3>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            );
+        }
+
+        function Normalize() {
+            return (
+                <>
+                    <div className="component">
+                        <div className="box">
+                            <div className="tax">
+                                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                                <h3>Paragraph</h3>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="tax">
+                                <img src="./asset/img/graduation-cap.png" alt="Icon 1" />
+                                <h3>Heading 1</h3>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            );
+        }
+
+        const pagesMap = {
+            universal: Universal,
+            normalize: Normalize,
+        };
+        function CustomFunction() {
+            const [page, setPage] = useState('universal');
+            const [activeSubmenu, setActiveSubmenu] = useState(null);
+
+            const menuItems = [
+                {
+                    name: 'Quick',
+                    submenu: [
+                        { name: 'universal', content: <Universal /> },
+                    ],
+                },
+                {
+                    name: 'Publish',
+                    submenu: [
+                        { name: 'normalize', content: <Normalize /> },
+                    ],
+                },
+            ];
+
+            const handleClick = (newPage) => {
+                setPage(newPage);
+            };
+
+            const handleMenuClick = (submenu) => {
+                setActiveSubmenu(submenu);
+            };
+
+            const SelectedPage = pagesMap[page];
+
+
+            return (
+                <>
+
+                    <div className="blogger" style={{ height: "100%" }}>
+
+
+
+
+                        <div className="doc">
+                            {activeSubmenu &&
+                                activeSubmenu.map((subitem, index) => (
+                                    <div className="tax"><a
+                                        key={index}
+                                        onClick={() => {
+                                            handleClick(subitem.name);
+                                        }}
+                                        href={`#${subitem.name}`}
+                                    >
+                                        {subitem.name}
+                                    </a></div>
+                                ))}
+
+
+                            <SelectedPage />
+                        </div>
+
+
+                        <div className="rightdoc">
+                            <ul>
+                                {menuItems.map((item, index) => (
+                                    <li key={index}>
+                                        <a onClick={() => handleMenuClick(item.submenu)}>
+                                            {item.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+
+                    <div className="middledoc"></div>
+
+                    <div className="leftdoc"></div>
+                </>
+            );
+        };
+
+
+
+        function App() {
+            return (
+                <div className="App">
+                    <h1>React Uygulaması</h1>
+                    <CustomFunction />
+                </div>
+            );
+        };
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(
+            <App />
+
+        )
+    </script>
+</body>
+
+</html>
