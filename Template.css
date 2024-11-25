@@ -1,0 +1,51 @@
+.leftdoc .flex-container {
+    position: relative;
+    float: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.flex-container {
+    position: relative;
+    float: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.flex-item {
+    flex: 1;
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    line-height: 100px;
+    margin: 10px;
+}
+
+
+
+.title,
+.subtitle,
+.component {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.component {
+    display: flex;
+    justify-content: space-around;
+}
+
+.box {
+    width: 23%;
+    height: 100px;
+    border: 1px solid black;
+    margin: 10px;
+}

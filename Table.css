@@ -1,0 +1,42 @@
+/* CSS */
+.grid-container {
+    position: relative;
+    float: left;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    height: auto;
+}
+
+.grid-item {
+    border: 1px solid #cbcbcb;
+    padding: 10px;
+}
+
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    margin-bottom: 1rem;
+}
+
+.icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    margin-right: 0.5rem;
+}
